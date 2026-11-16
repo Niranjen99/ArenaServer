@@ -22,7 +22,10 @@ if(ARENA_WERROR)
   target_compile_options(arena_options INTERFACE -Werror)
 endif()
 if(ARENA_SANITIZE)
-  target_compile_options(arena_options INTERFACE -fsanitize=address,undefined -fno-omit-frame-pointer)
+  # -fno-sanitize-recover: undefined behaviour stops the program (so a test fails) instead of
+  # only printing a message and carrying on.
+  target_compile_options(arena_options INTERFACE
+    -fsanitize=address,undefined -fno-sanitize-recover=undefined -fno-omit-frame-pointer)
   target_link_options(arena_options INTERFACE -fsanitize=address,undefined)
 endif()
 
