@@ -13,6 +13,7 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(arena_tests
   test_version.cpp
+  test_tcp_server.cpp
 )
 target_link_libraries(arena_tests PRIVATE arena_core arena_options GTest::gtest_main)
 

@@ -32,6 +32,8 @@ endif()
 # Everything except main() lives in this library, so the tests can link against it.
 add_library(arena_core
   src/arena/version.cpp
+  src/arena/net/socket.cpp
+  src/arena/net/tcp_server.cpp
 )
 target_include_directories(arena_core PUBLIC src)
 target_compile_definitions(arena_core PRIVATE ARENA_VERSION="${PROJECT_VERSION}")
